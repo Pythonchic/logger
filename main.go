@@ -1,7 +1,7 @@
 package main
 
 import (
-	"logger/logger"
+	"github.com/Pythonchic/logger"
 	color "github.com/fatih/color")
 
 
