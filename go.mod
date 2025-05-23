@@ -1,4 +1,4 @@
-module logger
+module github.com/Pythonchic/logger
 
 go 1.23.3
 
