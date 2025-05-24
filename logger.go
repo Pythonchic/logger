@@ -42,32 +42,34 @@ type arg struct {
 }
 
 func New(settings Settings) logger {
+	defaultColor(&settings.ColorInfo, *col.RGB(42, 110, 219))
+	defaultColor(&settings.ColorArguments, *col.RGB(255, 255, 255))
 	return logger(settings)
 }
 
 func (l *logger) Info(message string, arg ...arg) {
-	l.printMessage("INFO", message, l.ColorInfo, arg...)
+	l.printMessage("INFO", message, &l.ColorInfo, arg...)
 
 }
 
 func (l *logger) Debug(message string, arg ...arg) {
-	l.printMessage("DEBUG", message, l.ColorDebug, arg...)
+	l.printMessage("DEBUG", message, &l.ColorDebug, arg...)
 
 }
 
 func (l *logger) Warn(message string, arg ...arg) {
-	l.printMessage("WARN", message, l.ColorWarn, arg...)
+	l.printMessage("WARN", message, &l.ColorWarn, arg...)
 
 }
 
 func (l *logger) Error(message string, arg ...arg) {
-	l.printMessage("ERROR", message, l.ColorError, arg...)
+	l.printMessage("ERROR", message, &l.ColorError, arg...)
 	if l.CriticalError {
 		os.Exit(1)
 	}
 }
 
-func (l *logger) printMessage(typeMessage string, message string, color col.Color, arg ...arg) {
+func (l *logger) printMessage(typeMessage string, message string, color *col.Color, arg ...arg) {
 	if l.Time {
 		l.ColorTime.Print(time.Now().Format(l.TimeFormat) + " ")
 	}
@@ -92,4 +94,11 @@ func Arg(name any, value any) arg {
 	nameStr := fmt.Sprintf("%v", name)
 	valueStr := fmt.Sprintf("%v", value)
 	return arg{Name: nameStr, Value: valueStr}
+}
+
+
+func defaultColor (field *col.Color, color col.Color) {
+	if field == nil {
+		field = &color
+	}
 }
