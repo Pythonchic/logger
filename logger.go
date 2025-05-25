@@ -1,4 +1,4 @@
-package testlogger
+package logger
 
 import (
 	"fmt"
