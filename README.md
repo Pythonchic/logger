@@ -22,7 +22,7 @@ func main() {
 }
 
 // Output 
-2025/05/25 20:54:56 INFO: Server is started {
-  Host: localhost:8080 
-}
+// 2025/05/25 20:54:56 INFO: Server is started {
+//   Host: localhost:8080 
+// }
 ```
