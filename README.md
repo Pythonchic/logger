@@ -1,4 +1,7 @@
-# Logger - это библиотека для красивого вывода в терминал![[output-example.png]]
+# Logger is a library for beautiful output to the terminal!
+
+<img src="output-example.png" alt="output-example" title="output-example" width="80%"/>
+
 ## Installation
 
 ```shell
@@ -6,7 +9,6 @@ go get github.com/Pythonchic/logger
 ```
 
 ## Getting Started
-### Простой пример ведения журнала
 
 For simple logging, import the global logger package **github.com/Pythonchic/logger**
 ```go
