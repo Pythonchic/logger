@@ -41,11 +41,6 @@ type arg struct {
 	Value string
 }
 
-func New(settings Settings) logger {
-	defaultColor(&settings.ColorInfo, color.RGB(45, 138, 214), settings)
-	return logger(settings)
-}
-
 func NewLogger() logger {
 	return logger{
 		ColorInfo:      color.RGB(45, 157, 237),
