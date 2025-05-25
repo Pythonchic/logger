@@ -7,7 +7,6 @@ require (
 )
 
 require (
-	github.com/fatih/color v1.18.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
