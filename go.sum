@@ -1,5 +1,3 @@
-github.com/Pythonchic/logger v0.0.0-20250524045054-f5bd46082180 h1:C8KWP6W71EZCQ+RJ6mkFRT0w9Vz8IJPMpO5nacu9W3s=
-github.com/Pythonchic/logger v0.0.0-20250524045054-f5bd46082180/go.mod h1:gcmD6EuGUSsep2EPSDsBYcNlqvPf6tGGSd5hV0f6ptg=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=

@@ -1,9 +1,8 @@
-module testlogger
+module logger
 
 go 1.23.3
 
 require (
-	github.com/Pythonchic/logger v0.0.0-20250524045054-f5bd46082180
 	github.com/gookit/color v1.5.4
 )
 
