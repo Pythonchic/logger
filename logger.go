@@ -87,8 +87,9 @@ func (l *logger) printMessage(typeMessage string, message string, color color.RG
 			}
 		} else {
 			l.ColorArguments.Print(" {")
+			fmt.Print(l.ColorArguments.Sprint("  " + arg[0].Name + ": " + arg[0].Value))
+
 			if len(arg) > 1 {
-				fmt.Print(l.ColorArguments.Sprint("  " + arg[0].Name + ": " + arg[0].Value))
 				for _, v := range arg[1:] {
 					fmt.Print(l.ColorArguments.Sprint(", " + v.Name + ": " + v.Value))
 				}
