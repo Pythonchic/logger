@@ -13,27 +13,16 @@ type logger struct {
 	ColorDebug     color.RGBColor
 	ColorWarn      color.RGBColor
 	ColorError     color.RGBColor
-	ColorTime      color.RGBColor
 	ColorMessage   color.RGBColor
+	ColorTime      color.RGBColor
 	ColorArguments color.RGBColor
 
 	CriticalError bool
-	Time          bool
-	TimeFormat    string
-}
 
-type Settings struct {
-	ColorInfo      color.RGBColor
-	ColorDebug     color.RGBColor
-	ColorWarn      color.RGBColor
-	ColorError     color.RGBColor
-	ColorTime      color.RGBColor
-	ColorMessage   color.RGBColor
-	ColorArguments color.RGBColor
+	Time       bool
+	TimeFormat string
 
-	CriticalError bool
-	Time          bool
-	TimeFormat    string
+	PrettyArguments bool
 }
 
 type arg struct {
@@ -50,9 +39,13 @@ func NewLogger() logger {
 		ColorTime:      color.RGB(150, 232, 56),
 		ColorMessage:   color.RGB(48, 200, 227),
 		ColorArguments: color.RGB(247, 247, 247),
-		CriticalError:  false,
-		Time:           true,
-		TimeFormat:     "2006/01/02 15:4:5",
+
+		CriticalError: false,
+
+		Time:       true,
+		TimeFormat: "2006/01/02 15:4:5",
+
+		PrettyArguments: false,
 	}
 }
 func (l *logger) Info(message string, arg ...arg) {
@@ -87,12 +80,19 @@ func (l *logger) printMessage(typeMessage string, message string, color color.RG
 	l.ColorMessage.Print(message)
 	if arg != nil {
 
-		l.ColorArguments.Print(" {\n")
-		for _, v := range arg {
-			fmt.Print("  " + l.ColorArguments.Sprint(v.Name) + ": " + l.ColorArguments.Sprint(v.Value) + " \n")
-		}
+		if l.PrettyArguments {
+			l.ColorArguments.Print(" {\n")
+			for _, v := range arg {
+				fmt.Print("  " + l.ColorArguments.Sprint(v.Name + ": " + v.Value + " \n"))
+			}
 
-		l.ColorArguments.Print("}")
+			l.ColorArguments.Print("}")
+		} else {
+			l.ColorArguments.Print(" {")
+			for _, v := range arg {
+				fmt.Print("," + l.ColorArguments.Sprint(v.Name + ": " + v.Value))
+			}
+			l.ColorArguments.Print("}")}
 	}
 	l.ColorArguments.Print("\n")
 
@@ -102,11 +102,4 @@ func Arg(name any, value any) arg {
 	nameStr := fmt.Sprintf("%v", name)
 	valueStr := fmt.Sprintf("%v", value)
 	return arg{Name: nameStr, Value: valueStr}
-}
-
-func defaultColor(field *color.RGBColor, col color.RGBColor, structure Settings) {
-	colorDefault := color.RGB(38, 2, 0)
-	if field == &colorDefault {
-		*field = [4]uint8{col[0], col[1], col[2], col[3]}
-	}
 }
