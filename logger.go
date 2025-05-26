@@ -79,20 +79,22 @@ func (l *logger) printMessage(typeMessage string, message string, color color.RG
 
 	l.ColorMessage.Print(message)
 	if arg != nil {
-
+		l.ColorArguments.Print(" {")
 		if l.PrettyArguments {
-			l.ColorArguments.Print(" {\n")
+			l.ColorArguments.Print("\n")
 			for _, v := range arg {
-				fmt.Print("  " + l.ColorArguments.Sprint(v.Name + ": " + v.Value + " \n"))
+				fmt.Print(l.ColorArguments.Sprint("  " + v.Name + ": " + v.Value + " \n"))
 			}
-
-			l.ColorArguments.Print("}")
 		} else {
 			l.ColorArguments.Print(" {")
-			for _, v := range arg {
-				fmt.Print("," + l.ColorArguments.Sprint(v.Name + ": " + v.Value))
+			if len(arg) > 1 {
+				fmt.Print(l.ColorArguments.Sprint("  " + arg[0].Name + ": " + arg[0].Value))
+				for _, v := range arg[1:] {
+					fmt.Print(l.ColorArguments.Sprint(", " + v.Name + ": " + v.Value))
+				}
 			}
-			l.ColorArguments.Print("}")}
+		}
+		l.ColorArguments.Print("}")
 	}
 	l.ColorArguments.Print("\n")
 
