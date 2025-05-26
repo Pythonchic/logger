@@ -19,8 +19,8 @@ import (
 )
 
 func main() {
-	log := logger.NewLogger()
-    log.Info("Server is started", logger.Arg("Host", "localhost:8080")
+    log := logger.NewLogger()
+    log.Info("Server is started", logger.Arg("Host", "localhost:8080"))
 }
 
 // Output 
