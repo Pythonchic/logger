@@ -1,6 +1,6 @@
 # Logger is a library for beautiful output to the terminal!
 
-<img src="output-example.png" alt="output-example" title="output-example" width="80%"/>
+<img src="output-example.png" alt="output-example" title="output-example" width="100%"/>
 
 ## Installation
 
